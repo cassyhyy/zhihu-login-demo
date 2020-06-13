@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>知乎 - 有问题，上知乎</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+
+    <body>
+        <div class="root">
+            <div class="main">
+                <div class="logo-block">
+                    <img id="logo" src="img/logo.png" />
+                </div>
+                <div class="tab">
+                    <div class="tab-qrcode" onclick="loginByScanCode()">
+                        <!-- <img src="img/qr_code.png" /> -->
+                    </div>
+                    <section class="form">
+                        <div class="form-header">
+                            <div class="tab-login tab-login--bold" onclick="changeLogin(1)">免密码登录</div>
+                            <div class="tab-login" onclick="changeLogin(2)">密码登录</div>
+                        </div>
+                        <!--免密码登录form-->
+                        <form id="login-phone">
+                            <div class="form-input">
+                                <div class="form-input-line">
+                                    <select class="form-select">
+                                        <option>中国+86</option>
+                                    </select>
+                                    <span></span>
+                                    <input class="login-input" type="text" placeholder="手机号">
+                                </div>
+                                <div class="form-input-line">
+                                    <input class="login-input" type="text" placeholder="输入6位短信验证码">
+                                    <button class="btn--transparent login-captcha">获取短信验证码</button>
+                                </div>
+                            </div>
+                            <div class="form-captcha-line">
+                                <button class="btn--transparent login-captcha--gray">接收语音验证码</button>
+                            </div>
+                            <button class="login-btn">注册/登录</button>
+                        </form>
+                        <!--密码登录form-->
+                        <form id="login-password">
+                            <div class="form-input">
+                                <div class="form-input-line">
+                                    <input class="login-input" type="text" placeholder="手机号或邮箱">
+                                </div>
+                                <div class="form-input-line">
+                                    <input class="login-input" type="text" placeholder="密码">
+                                </div>
+                            </div>
+                            <div class="form-captcha-line">
+                                <button class="btn--transparent login-oversea">海外手机号登录</button>
+                                <button class="btn--transparent login-captcha--gray">忘记密码？</button>
+                            </div>
+                            <button class="login-btn">登录</button>
+                        </form>
+                        <div class="form-info">
+                            <p>未注册手机验证后自动登录，注册即代表同意<a href="https://www.zhihu.com/term/zhihu-terms">《知乎协议》</a><a href="https://www.zhihu.com/term/privacy">《隐私保护指引》</a></p>
+                        </div>
+                    </section>
+
+                    <section class="social">
+                        <p>社交账号登录</p>
+                        <div>
+                            <div class="social-block" onclick="redirectToSocial(1)">
+                                <img src="img/wechat.png" />
+                                <p>微信</p>
+                            </div>
+                            <div class="social-block" onclick="redirectToSocial(2)">
+                                <img src="img/qq.png" />
+                                <p>QQ</p>
+                            </div>
+                            <div class="social-block" onclick="redirectToSocial(3)">
+                                <img src="img/weibo.png" />
+                                <p>微博</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="tab-footer">
+                    <div class="tab-footer-block" onclick="registerOrganization()">
+                        <img src="img/organization.png" />
+                        <p>开通机构号</p>
+                    </div>
+                    <span></span>
+                    <div class="tab-footer-block float--right" onclick="downloadApp(1)">
+                        <img src="img/zhihu.png" />
+                        <p>下载知乎App</p>
+                    </div>
+                    <div class="tab-footer-block float--right" style="display:none;" onclick="downloadApp(2)">
+                        <p>关闭二维码</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <section class="footer-line">
+                    <a class="link" href="https://zhuanlan.zhihu.com/" target="view_window">知乎专栏</a>
+                    <a class="link" href="https://www.zhihu.com/roundtable" target="view_window">圆桌</a>
+                    <a class="link" href="https://www.zhihu.com/explore" target="view_window">发现</a>
+                    <a class="link" href="https://www.zhihu.com/app/" target="view_window">移动应用</a>
+                    <a class="link" href="https://www.zhihu.com/contact" target="view_window">联系我们</a>
+                    <a class="link" href="https://app.mokahr.com/apply/zhihu/3819" target="view_window">来知乎工作</a>
+                    <a class="link" href="https://www.zhihu.com/org/signup" target="view_window">注册机构号</a>
+                </section>
+                <section class="footer-line">
+                    <p>© 2020 知乎</p>
+                    <a class="link" href="https://tsm.miit.gov.cn/dxxzsp/" target="view_window">京 ICP 证 110745 号</a>
+                    <a class="link" href="http://www.beian.miit.gov.cn/" target="view_window">京 ICP 备 13052560 号 - 1</a>
+                    <a class="link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020088" target="view_window">
+                        <img src="img/police.png" />
+                        京公网安备 11010802010035 号
+                    </a>
+                    <a class="link" href="https://zhstatic.zhihu.com/assets/zhihu/publish-license.jpg" target="view_window">出版物经营许可证</a> 
+                </section>
+                <section class="footer-line">
+                    <a class="link" href="https://zhuanlan.zhihu.com/p/51068775" target="view_window">侵权举报</a>
+                    <a class="link" href="https://www.12377.cn/" target="view_window">网上有害信息举报专区</a>
+                    <a class="link" href="https://www.zhihu.com/jubao" target="view_window">儿童色情信息举报专区</a>
+                    <p>违法和不良信息举报：010-82716601</p>
+                </section>
+            </footer>
+        </div>
+    </body>
+
+    <script type="text/javascript" src="index.js"></script>
+</html>
