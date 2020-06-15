@@ -10,7 +10,7 @@ body{
 
 .root{
     background:url('img/bg.png') no-repeat;
-    background-color:#ABDFF6;
+    background-color:#b8e5f8;
     background-attachment:fixed;
     background-size: cover;
     padding:4rem 0 2rem;
@@ -49,6 +49,12 @@ form{
 button{
     cursor: pointer;
 }
+.show--none{
+    display:none;
+}
+.show--block{
+    display:block;
+}
 
 /* 首页logo */
 .logo-block{
@@ -68,16 +74,26 @@ button{
     background-color: #fff;
     border-radius: 2px 2px 0 0;
     box-shadow: 0 1px 3px rgba(26,26,26,0.1);
+    position: relative;
 }
+/* tab右上角二维码登录 */
+.tab-qrcode{
+    cursor: pointer;
+    position: absolute;
+    top:0;
+    right:0;
+}
+.tab-qrcode img{
+    width:52px;
+    height:52px;
+    clip-path: polygon(0 0, 100% 100%, 100% 0);
+    border-top-right-radius: 5px;
+}
+
+
 /* tab登录header */
 .form-header{
     font-size:2rem;
-}
-#login-phone{
-    display:block;
-}
-#login-password{
-    display:none;
 }
 .tab-login{
     display: inline-block;
@@ -94,6 +110,31 @@ button{
     border-bottom: 3px solid #0084ff;
 }
 
+/* 二维码登录 */
+.login-qrcode{
+    padding: 40px 0;
+    text-align: center;
+}
+.login-qrcode>p{
+    font-size: 24px;
+    color: #1a1a1a;
+    line-height: 33px;
+    margin-bottom: 50px;
+    margin-top: 3px;
+}
+.login-qrcode img{
+    width:150px;
+    height:150px;
+    margin-bottom:15px;
+}
+.login-qrcode-info{
+    font-size: 14px;
+    line-height: 22px;
+}
+.login-qrcode-info a{
+    color:#175199;
+}
+
 /* 登录form */
 .form-input{
     margin-top:2.4rem;
@@ -103,6 +144,7 @@ button{
     min-width:8.2rem;
     outline-style:none;
     color:#8590a6;
+    font-size:14px;
 }
 .form-input .form-input-line:nth-child(2){
     margin-top:12px;
@@ -118,14 +160,30 @@ button{
     border-right: solid #ebebeb 1px;
 }
 .login-input{
-    height: 4.8rem;
+    height: 48px;
     color: #1a1a1a;
     line-height: 2.4rem;
     border:none;
     outline-style:none;
     min-width:24rem;
+    font-size:14px;
+}
+.login-input::placeholder{
+    font-size:14px;
+    color:#8590a6;
+}
+.login-input--red::placeholder{
+    color:red;
+}
+.login-input-tip{
+    font-size:14px;
+    color:red;
+    position:absolute;
+    right:0;
+    line-height:48px;
 }
 .login-captcha{
+    font-size:14px;
     position: absolute;
     top: 24px;
     right: 0;
@@ -158,17 +216,50 @@ button{
     border:none;
     margin-top:30px;
     width:100%;
+    font-size:14px;
 }
 .login-btn:hover{
     background-color: #0084ffcb;
 }
 
+/* 下载知乎App二维码 */
+.tab-download{
+    position: absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:0;
+    opacity:0;
+    text-align:center;
+    background:#fff;
+    transition:opacity .3s, height .3s;
+}
+.tab-download-transition{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:375px;
+    opacity:100;
+    transition:opacity .3s, height .3s;
+}
+.tab-download img{
+    width:232px;
+    position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:auto;
+}
+ 
+
 /* 协议同意提示文字 */
 .form-info{
-    padding:1.2rem 0;
+    padding:21px 0 12px;
     color: grey;
     font-size: 1.3rem;
-    border-bottom: 1px solid #ebebeb;
+    /* border-bottom: 1px solid #ebebeb; */
 }
 .form-info a{
     color:grey;
@@ -177,6 +268,18 @@ button{
     color:grey;
 }
 
+/* tab底部，分割线&社交账号 */
+.tab--bottom{
+    width:40rem;
+    margin:0 auto;
+    padding:0 2.4rem;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+#form-social-line{
+    border-top: 1px solid #ebebeb;
+}
 /* 社交账号 */
 .social{
     color: #8590a6;
@@ -225,6 +328,7 @@ button{
     border-radius: 0 0 2px 2px;
     box-shadow: 0 1px 3px rgba(26,26,26,0.1);
     position:relative;
+    clear:both;
 }
 .tab-footer-block:hover{
     cursor: pointer;

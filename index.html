@@ -12,55 +12,91 @@
                     <img id="logo" src="img/logo.png" />
                 </div>
                 <div class="tab">
-                    <div class="tab-qrcode" onclick="loginByScanCode()">
-                        <!-- <img src="img/qr_code.png" /> -->
+                    <!--右上角二维码按钮-->
+                    <div class="tab-qrcode" onclick="loginByScanCode(1)">
+                        <img src="img/qr_code.png" />
                     </div>
+                    <div class="tab-qrcode show--none" onclick="loginByScanCode(2)">
+                        <img src="img/login_return.png" />
+                    </div>
+
+                    <!--扫码登录-->
+                    <section class="login-qrcode show--none">
+                        <p>扫码登录</p>
+                        <img src="img/login_qrcode.png" />
+                        <div class="login-qrcode-info">
+                            <p>打开 <a href="https://www.zhihu.com/app/" target="view_window">知乎 App</a></p>
+                            <p>在「我的」页面顶部打开扫一扫</p>
+                        </div>
+                    </section>
+
+                    <!--登录tab登录-->
                     <section class="form">
                         <div class="form-header">
                             <div class="tab-login tab-login--bold" onclick="changeLogin(1)">免密码登录</div>
                             <div class="tab-login" onclick="changeLogin(2)">密码登录</div>
                         </div>
                         <!--免密码登录form-->
-                        <form id="login-phone">
+                        <div class="show--block" id="login-phone">
                             <div class="form-input">
                                 <div class="form-input-line">
                                     <select class="form-select">
                                         <option>中国+86</option>
                                     </select>
                                     <span></span>
-                                    <input class="login-input" type="text" placeholder="手机号">
+                                    <input class="login-input" type="text" id="phone-number" placeholder="手机号" onblur="checkInput(event)" onclick="inputPhone()">
+                                    <p class="show--none login-input-tip">请输入正确的手机号</p>
                                 </div>
                                 <div class="form-input-line">
-                                    <input class="login-input" type="text" placeholder="输入6位短信验证码">
-                                    <button class="btn--transparent login-captcha">获取短信验证码</button>
+                                    <input class="login-input" type="text" placeholder="输入6位短信验证码" onblur="checkInput(event)">
+                                    <button class="btn--transparent login-captcha" onclick="getCaptcha(event)">获取短信验证码</button>
+                                    <p class="show--none login-captcha login-captcha--gray">60秒后可重发</p>
                                 </div>
                             </div>
                             <div class="form-captcha-line">
-                                <button class="btn--transparent login-captcha--gray">接收语音验证码</button>
+                                <button class="btn--transparent login-captcha--gray" onclick="getCaptcha(event)">接收语音验证码</button>
                             </div>
                             <button class="login-btn">注册/登录</button>
-                        </form>
+                        </div>
                         <!--密码登录form-->
-                        <form id="login-password">
+                        <div class="show--none" id="login-password">
                             <div class="form-input">
                                 <div class="form-input-line">
-                                    <input class="login-input" type="text" placeholder="手机号或邮箱">
+                                    <input class="login-input" type="text" placeholder="手机号或邮箱" onblur="checkInput(event)">
+                                </div>
+                                <div class="form-input-line show--none">
+                                    <select class="form-select">
+                                        <option>中国+86</option>
+                                    </select>
+                                    <span></span>
+                                    <input class="login-input" type="text" id="phone-number" placeholder="手机号" onblur="checkInput(event)" onclick="inputPhone()">
+                                    <p class="show--none login-input-tip">请输入正确的手机号</p>
                                 </div>
                                 <div class="form-input-line">
-                                    <input class="login-input" type="text" placeholder="密码">
+                                    <input class="login-input" type="text" placeholder="密码" onblur="checkInput(event)">
                                 </div>
                             </div>
                             <div class="form-captcha-line">
-                                <button class="btn--transparent login-oversea">海外手机号登录</button>
-                                <button class="btn--transparent login-captcha--gray">忘记密码？</button>
+                                <button class="btn--transparent login-oversea" onclick="loginByPhone(event)">海外手机号登录</button>
+                                <button class="btn--transparent login-captcha--gray" onclick="forgetPassword()">忘记密码？</button>
                             </div>
                             <button class="login-btn">登录</button>
-                        </form>
+                        </div>
                         <div class="form-info">
                             <p>未注册手机验证后自动登录，注册即代表同意<a href="https://www.zhihu.com/term/zhihu-terms">《知乎协议》</a><a href="https://www.zhihu.com/term/privacy">《隐私保护指引》</a></p>
                         </div>
                     </section>
 
+                    <!--下载知乎App二维码-->
+                    <section class="tab-download">
+                        <img src="img/qr_code.png" class="show--none" />
+                    </section>
+                </div>
+
+                <div class="tab--bottom">
+                    <!--分割线-->
+                    <div id="form-social-line"></div>
+                    <!--社交账号-->
                     <section class="social">
                         <p>社交账号登录</p>
                         <div>
