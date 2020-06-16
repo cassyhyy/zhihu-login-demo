@@ -55,6 +55,10 @@ button{
 .show--block{
     display:block;
 }
+input[type="password"] {
+    letter-spacing: 2px;
+    font-size: 23px;
+}
 
 /* 首页logo */
 .logo-block{
@@ -70,10 +74,14 @@ button{
 .tab{
     width:40rem;
     margin:0 auto;
-    padding:0 2.4rem;
+    padding:0;
     background-color: #fff;
-    border-radius: 2px 2px 0 0;
     box-shadow: 0 1px 3px rgba(26,26,26,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+.tab-main{
+    padding:0 2.4rem;
     position: relative;
 }
 /* tab右上角二维码登录 */
@@ -92,8 +100,11 @@ button{
 
 
 /* tab登录header */
+.form{
+    padding: 0 0 84px;
+}
 .form-header{
-    font-size:2rem;
+    font-size:20px;
 }
 .tab-login{
     display: inline-block;
@@ -120,7 +131,7 @@ button{
     color: #1a1a1a;
     line-height: 33px;
     margin-bottom: 50px;
-    margin-top: 3px;
+    margin-top: 4px;
 }
 .login-qrcode img{
     width:150px;
@@ -139,15 +150,62 @@ button{
 .form-input{
     margin-top:2.4rem;
 }
+/* 手机区号选择框 */
 .form-select{
     border:none;
     min-width:8.2rem;
     outline-style:none;
     color:#8590a6;
     font-size:14px;
+    cursor: pointer;
+    display:inline-block;
 }
-.form-input .form-input-line:nth-child(2){
-    margin-top:12px;
+.form-select button{
+    color:#8590a6;
+    font-size:14px;
+}
+.form-select img{
+    width:12px;
+    height:20px;
+    float:right;
+    vertical-align:middle;
+    margin-left:8px;
+}
+.form-options{
+    position: absolute;
+    top:0;
+    left:0;
+    overflow: auto;
+    max-height: 500px;
+    min-width:213px;
+    padding: 8px 0;
+    border-radius: 4px;
+    z-index:20;
+    background:#fff;
+    border: 1px solid #ebebeb;
+}
+.form-options ul{
+    list-style:none;
+    font-size:14px;
+    margin:0;
+    padding:0;
+}
+.form-options li{
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+    line-height: 40px;
+    color: #8590a6;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.form-options li:hover{
+    background: #ebebeb;
+}
+.form-input-line--margin{
+    margin-bottom:12px;
 }
 .form-input-line{
     border-bottom: 1px solid #ebebeb;
@@ -165,7 +223,7 @@ button{
     line-height: 2.4rem;
     border:none;
     outline-style:none;
-    min-width:24rem;
+    /* min-width:24rem; */
     font-size:14px;
 }
 .login-input::placeholder{
@@ -181,6 +239,8 @@ button{
     position:absolute;
     right:0;
     line-height:48px;
+    background:#fff;
+    z-index:5;
 }
 .login-captcha{
     font-size:14px;
@@ -201,6 +261,16 @@ button{
 .login-oversea{
     color: #175199;
     display:inline-block;
+}
+#login-password-block img{
+    position:absolute;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    width:25px;
+    height:22px;
+    cursor: pointer;
 }
 
 /* 登录按钮 */
@@ -256,10 +326,14 @@ button{
 
 /* 协议同意提示文字 */
 .form-info{
-    padding:21px 0 12px;
+    padding:12px 24px;
+    font-size:13px;
     color: grey;
     font-size: 1.3rem;
-    /* border-bottom: 1px solid #ebebeb; */
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
 }
 .form-info a{
     color:grey;
@@ -270,10 +344,7 @@ button{
 
 /* tab底部，分割线&社交账号 */
 .tab--bottom{
-    width:40rem;
-    margin:0 auto;
     padding:0 2.4rem;
-    background-color: #fff;
     position: relative;
     overflow: hidden;
 }
@@ -318,15 +389,11 @@ button{
 /* tab的footer信息 */
 .tab-footer{
     color: #0084FF;
-    width:40rem;
     height: 6rem;
     line-height:6rem;
     padding:0 2.4rem;
     background-color: #F6F6F6;
-    font-size:1.5rem;
-    margin:0 auto;
-    border-radius: 0 0 2px 2px;
-    box-shadow: 0 1px 3px rgba(26,26,26,0.1);
+    font-size:15px;
     position:relative;
     clear:both;
 }

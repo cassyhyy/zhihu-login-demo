@@ -1,3 +1,24 @@
+(function(){
+    const form = document.getElementsByClassName('form-options')[0];
+    const ul = form.children[0];
+    // 判断被点击的元素是不是区号选择框，点击其他地方则会隐藏选择框
+    document.addEventListener("click", function(e){
+        form.style.display = 'none';
+    });
+
+    ul.addEventListener('click', selectCountryCode, false);
+    function selectCountryCode(e){
+        let x = e.target;
+        if(x.nodeName.toLowerCase() === 'li'){
+            // 点击li，将区号按钮内容改为当前选中的li
+            let div = document.getElementsByClassName('form-select')[0];
+            div.children[0].innerHTML = x.innerHTML;
+            form.style.display = 'none';
+            e.stopPropagation();
+        }
+    }
+})();
+
 // 扫码登录
 function loginByScanCode(flag){
     const login = document.getElementsByClassName('login-qrcode')[0];
@@ -17,22 +38,44 @@ function loginByScanCode(flag){
     }
 }
 
-function changeLogin(flag){
-    // 选择免密码登录
+// 选择区号
+function showCountryCode(event){
+    const options = document.getElementsByClassName('form-options')[0];
+    options.style.display = 'block';
+    event.stopPropagation();
+}
+
+// 改变登录方式
+function changeLogin(event){
     const phoneTab = document.getElementById('login-phone');
     const passwordTab = document.getElementById('login-password');
     const header = document.getElementsByClassName('form-header')[0];
-    if(flag === 1){
+    const noPassword = ['login-phone-block', 'login-captcha-block', 'login-captcha-btn'];
+    const needPassword = ['login-account-block', 'login-password-block', 'login-account-btn'];
+    const loginBtn = document.getElementsByClassName('login-btn')[0];
+
+    if(event.target.innerHTML.includes('免密码')){
+        // 选择免密码登录
         header.children[1].classList.remove('tab-login--bold');
         header.children[0].classList.add('tab-login--bold');
-        passwordTab.style.display = 'none';
-        phoneTab.style.display = 'block';
+        for(let id of needPassword){
+            document.getElementById(id).style.display = 'none';
+        }
+        for(let id of noPassword){
+            document.getElementById(id).style.display = 'block';
+        }
+        loginBtn.innerHTML = '注册/登录';
     }else{
         // 选择密码登录
         header.children[0].classList.remove('tab-login--bold');
         header.children[1].classList.add('tab-login--bold');
-        phoneTab.style.display = 'none';
-        passwordTab.style.display = 'block';
+        for(let id of noPassword){
+            document.getElementById(id).style.display = 'none';
+        }
+        for(let id of needPassword){
+            document.getElementById(id).style.display = 'block';
+        }
+        loginBtn.innerHTML = '登录';
     }
 }
 
@@ -70,7 +113,7 @@ function checkPhone(){
         }else{
             let line = document.getElementsByClassName('form-captcha-line')[0];
             line.style.visibility = 'hidden';
-            let captchaInput = document.getElementsByClassName('form-input-line')[1];
+            let captchaInput = document.getElementById('login-captcha-block');
             captchaInput.children[1].style.display = 'none';
             captchaInput.children[2].style.display = 'inline-block';
             let seconds = 59;
@@ -118,8 +161,8 @@ function forgetPassword(){
 // 海外手机号登录
 function loginByPhone(event){
     const str = event.target.innerHTML;
-    const email = document.getElementById('login-password').getElementsByClassName('form-input-line')[0];
-    const phone = document.getElementById('login-password').getElementsByClassName('form-input-line')[1];
+    const email = document.getElementById('login-account-block');
+    const phone = document.getElementById('login-phone-block');
     if(str.includes('手机号')){
         // 切换到海外手机号登录
         email.style.display = 'none';
@@ -131,6 +174,24 @@ function loginByPhone(event){
         email.style.display = 'block';
         event.target.innerHTML = '海外手机号登录';
     }
+}
+
+// 切换密码显示方式
+function passwordShow(event){
+    const id = event.target.getAttribute('id');
+    const password = document.getElementById('login-password-input');
+    
+    let target = '';
+    if(id.includes('hide')){
+        // 隐藏密码显示
+        password.setAttribute('type', 'password');
+        target = 'login-password-show';
+    }else{
+        password.setAttribute('type', 'text');
+        target = 'login-password-hide';
+    }
+    event.target.style.display = 'none';
+    document.getElementById(target).style.display = 'block';
 }
 
 // 社交账号登录
